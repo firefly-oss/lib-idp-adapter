@@ -41,7 +41,7 @@ public interface IdpAdapter {
      *
      * @param accessToken the access token to invalidate
      */
-    void logout(String accessToken);
+    Mono<Void> logout(String accessToken);
 
     /**
      * Introspect an access token to verify its activity and claims (RFC 7662).
@@ -74,14 +74,14 @@ public interface IdpAdapter {
      *
      * @param request contains user identifier and new/old passwords
      */
-    void changePassword(ChangePasswordRequest request);
+    Mono<Void> changePassword(ChangePasswordRequest request);
 
     /**
      * Trigger a password reset for a given username (e.g., send reset email/SMS).
      *
      * @param username the username (or login identifier) for which to initiate reset
      */
-    void resetPassword(String username);
+    Mono<Void> resetPassword(String username);
 
     /**
      * Initiate a Multi‑Factor Authentication (MFA) challenge for a user.
@@ -96,14 +96,14 @@ public interface IdpAdapter {
      *
      * @param request verification payload including challenge id and code
      */
-    void mfaVerify(MfaVerifyRequest request);
+    Mono<Void> mfaVerify(MfaVerifyRequest request);
 
     /**
      * Revoke an issued refresh token.
      *
      * @param refreshToken the refresh token to revoke
      */
-    void revokeRefreshToken(String refreshToken);
+    Mono<Void> revokeRefreshToken(String refreshToken);
 
     /**
      * List active sessions for a given user.
@@ -118,7 +118,7 @@ public interface IdpAdapter {
      *
      * @param sessionId the session identifier to revoke
      */
-    void revokeSession(String sessionId);
+    Mono<Void> revokeSession(String sessionId);
 
     /**
      * Retrieve the roles assigned to a user.
@@ -127,4 +127,49 @@ public interface IdpAdapter {
      * @return a reactive publisher with the list of role names
      */
     Mono<ResponseEntity<List<String>>> getRoles(String userId);
+
+    /**
+     * Delete a user by its identifier in the IdP.
+     *
+     * @param userId the provider-specific user id
+     */
+    Mono<Void> deleteUser(String userId);
+
+    /**
+     * Update an existing user. Fields left null in the request should not be modified.
+     *
+     * @param request details to update and user identifier
+     * @return a reactive publisher with a summary of the updated user
+     */
+    Mono<ResponseEntity<UpdateUserResponse>> updateUser(UpdateUserRequest request);
+
+    /**
+     * Create one or more roles at the IdP (realm or client depending on context).
+     *
+     * @param request role names (and optional context/description)
+     * @return a reactive publisher with the list of created role names
+     */
+    Mono<ResponseEntity<CreateRolesResponse>> createRoles(CreateRolesRequest request);
+
+    /**
+     * Create a new scope (e.g., OAuth2 scope or Keycloak client scope).
+     *
+     * @param request scope name (and optional context/description)
+     * @return a reactive publisher with created scope information
+     */
+    Mono<ResponseEntity<CreateScopeResponse>> createScope(CreateScopeRequest request);
+
+    /**
+     * Assign roles to a user.
+     *
+     * @param request user id and role names to assign
+     */
+    Mono<Void> assignRolesToUser(AssignRolesRequest request);
+
+    /**
+     * Remove roles from a user.
+     *
+     * @param request user id and role names to remove
+     */
+    Mono<Void> removeRolesFromUser(AssignRolesRequest request);
 }
