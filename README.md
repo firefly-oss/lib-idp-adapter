@@ -1,4 +1,4 @@
-# Catalis IDP Adapter Library
+# Firefly OpenCore Banking Platform - IDP Adapter Library
 
 A small, provider-agnostic interface to standardize Identity Provider (IdP) operations across platforms such as Keycloak, AWS Cognito, Okta, Auth0, and others. It exposes a consistent, reactive API so your application code remains clean and portable, while concrete implementations translate calls into provider‑specific requests.
 
