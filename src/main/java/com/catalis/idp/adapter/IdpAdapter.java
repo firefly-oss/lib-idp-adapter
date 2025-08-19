@@ -35,13 +35,13 @@ public interface IdpAdapter {
     Mono<ResponseEntity<TokenResponse>> refresh(RefreshRequest request);
 
     /**
-     * Invalidate an access token or perform a provider-specific logout.
+     * Invalidate tokens or perform a provider-specific logout.
      *
      * Implementations may call the IdP's logout or token revocation endpoint.
      *
-     * @param accessToken the access token to invalidate
+     * @param request contains accessToken and refreshToken to invalidate
      */
-    Mono<Void> logout(String accessToken);
+    Mono<Void> logout(LogoutRequest request);
 
     /**
      * Introspect an access token to verify its activity and claims (RFC 7662).

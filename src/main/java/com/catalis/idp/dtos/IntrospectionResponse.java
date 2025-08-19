@@ -21,5 +21,4 @@ public class IntrospectionResponse {
     private List<String> aud;
     private String iss;
     private String jti;
-    private String clientId;
 }
