@@ -1,4 +1,4 @@
-package com.catalis.idp.dtos;
+package com.firefly.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,13 +8,12 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 /**
- * Request to assign or remove roles from a user.
+ * Response containing the roles created by the IdP.
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AssignRolesRequest {
-    private String userId;
-    private List<String> roleNames;
+public class CreateRolesResponse {
+    private List<String> createdRoleNames;
 }

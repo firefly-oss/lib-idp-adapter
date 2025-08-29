@@ -1,4 +1,4 @@
-package com.catalis.idp.dtos;
+package com.firefly.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

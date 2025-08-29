@@ -1,4 +1,4 @@
-package com.catalis.idp.dtos;
+package com.firefly.idp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChangePasswordRequest {
+public class MfaVerifyRequest {
+    private String challengeId;
+    private String code;
     private String userId;
-    private String oldPassword;
-    private String newPassword;
 }
