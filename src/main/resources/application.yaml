@@ -7,6 +7,11 @@ spring:
       name: Firefly Software Solutions Inc
       email: dev@getfirefly.io
 
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
+
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
@@ -16,6 +21,11 @@ spring:
   config:
     activate:
       on-profile: dev
+
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
 
 logging:
   level:
@@ -29,6 +39,11 @@ spring:
   config:
     activate:
       on-profile: testing
+
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
 
 logging:
   level:
@@ -47,6 +62,11 @@ spring:
   config:
     activate:
       on-profile: prod
+
+server:
+  address: ${SERVER_ADDRESS:localhost}
+  port: ${SERVER_PORT:8080}
+  shutdown: graceful
 
 logging:
   level:
