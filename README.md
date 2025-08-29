@@ -41,7 +41,7 @@ Add the dependency to your Maven project. Replace the version as appropriate.
 
 ```xml
 <dependency>
-    <groupId>com.catalis</groupId>
+    <groupId>com.firefly</groupId>
     <artifactId>lib-idp-adapter</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -49,7 +49,7 @@ Add the dependency to your Maven project. Replace the version as appropriate.
 
 If you are using Gradle (Kotlin DSL):
 ```kotlin
-implementation("com.catalis:lib-idp-adapter:1.0.0-SNAPSHOT")
+implementation("com.firefly:lib-idp-adapter:1.0.0-SNAPSHOT")
 ```
 
 Note: This module provides only the abstraction (interface + DTOs). You will need an implementation module for your chosen provider.
@@ -119,7 +119,7 @@ Mono<ResponseEntity<TokenResponse>> result = idpAdapter.login(
 ```
 
 ## 6. API Summary
-The main entry point is `com.catalis.idp.adapter.IdpAdapter`.
+The main entry point is `com.firefly.idp.adapter.IdpAdapter`.
 
 Basic operations:
 - `Mono<ResponseEntity<TokenResponse>> login(LoginRequest request)`
@@ -139,7 +139,7 @@ Advanced operations:
 - `void revokeSession(String sessionId)`
 - `Mono<ResponseEntity<List<String>>> getRoles(String userId)`
 
-DTOs are located under `com.catalis.idp.dtos` and cover requests and responses for the above methods.
+DTOs are located under `com.firefly.idp.dtos` and cover requests and responses for the above methods.
 
 ## 7. Implementation Notes
 - Error Handling: Return appropriate HTTP status codes in `ResponseEntity` (e.g., 401 for invalid credentials, 400 for invalid requests, 500 for unexpected provider errors). Wrap provider errors consistently.
