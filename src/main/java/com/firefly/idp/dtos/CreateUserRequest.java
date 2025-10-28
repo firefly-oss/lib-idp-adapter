@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -34,5 +35,6 @@ public class CreateUserRequest {
     private String password;
     private String givenName;
     private String familyName;
+    private UUID partyId;
     private Map<String, Object> attributes;
 }

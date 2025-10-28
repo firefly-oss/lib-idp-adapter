@@ -17,12 +17,14 @@
 
 package com.firefly.idp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -35,7 +37,9 @@ public class IntrospectionResponse {
     private Long exp;
     private Long iat;
     private String sub;
+    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     private List<String> aud;
     private String iss;
     private String jti;
+    private UUID partyId;
 }
