@@ -17,6 +17,7 @@
 
 package com.firefly.idp.dtos;
 
+import com.firefly.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,5 +37,6 @@ public class CreateUserRequest {
     private String givenName;
     private String familyName;
     private UUID partyId;
+    private UserRoleEnum userRole;
     private Map<String, Object> attributes;
 }

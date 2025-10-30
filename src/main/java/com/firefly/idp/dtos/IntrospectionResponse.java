@@ -18,6 +18,7 @@
 package com.firefly.idp.dtos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.firefly.idp.dtos.enums.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,4 +43,5 @@ public class IntrospectionResponse {
     private String iss;
     private String jti;
     private UUID partyId;
+    private UserRoleEnum userRole;
 }
